@@ -46,7 +46,7 @@
   .facts li::before { content: '✓ '; color: var(--cyan); font-weight: 800; }
 
   .gallery { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .gallery li:first-child { grid-column: 1 / -1; }
+  .gallery li:first-child, .gallery li:last-child { grid-column: 1 / -1; }
   .gallery img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px; box-shadow: 0 14px 40px rgba(0,0,0,.5), 0 0 0 1px var(--line); }
 
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -87,13 +87,14 @@
 <main>
 <section class="wrap" aria-labelledby="shots">
   <h2 id="shots">On the road</h2>
-  <p class="lead">Highway races, circuits, nitro and a garage full of cars, bikes and trucks.</p>
+  <p class="lead">Highway races, circuits, nitro, a garage full of cars, bikes and trucks, and the view from the driver's seat.</p>
   <ul class="gallery">
     <li><img src="screenshots/02-highway-race.webp" alt="A highway race through traffic, seen from behind the car" width="1280" height="720"></li>
     <li><img src="screenshots/03-nitro.webp" alt="Nitro boost on the highway" width="1280" height="720" loading="lazy"></li>
     <li><img src="screenshots/04-circuit.webp" alt="A race on a circuit against computer drivers" width="1280" height="720" loading="lazy"></li>
     <li><img src="screenshots/01-menu.webp" alt="The game's main menu" width="1280" height="720" loading="lazy"></li>
     <li><img src="screenshots/05-garage.webp" alt="The garage with upgrades and paint" width="1280" height="720" loading="lazy"></li>
+    <li><img src="screenshots/06-cockpit.webp" alt="Driving downtown at sunset, seen from the driver's seat" width="1280" height="720" loading="lazy"></li>
   </ul>
 </section>
 
