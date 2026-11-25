@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andromeda Car Racing</title>
+<meta name="description" content="Andromeda Car Racing: a 3D highway and circuit racer that works fully offline. No account, no ads. By JerlinPhoenix.">
+<meta property="og:title" content="Andromeda Car Racing">
+<meta property="og:description" content="A 3D highway and circuit racer that works fully offline. No account, no ads.">
+<meta property="og:image" content="https://toniomathio.github.io/car-racing/feature-graphic.jpg">
+<meta name="theme-color" content="#0d1321">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+  @font-face { font-family: 'Exo 2'; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/exo-2-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Exo 2'; font-style: italic; font-weight: 900; font-display: swap; src: url(fonts/exo-2-latin-900-italic.woff2) format('woff2'); }
+  :root {
+    --bg: #0d1321; --surface: #151d31; --line: rgba(255,255,255,.09);
+    --text: #eef2f8; --muted: #9aa7bd; --cyan: #4cc9f0; --red: #ff3b5c; --orange: #ff8a1e; --gold: #ffcb3d;
+    --max: 1100px;
+  }
+  * { box-sizing: border-box; }
+  html { scrollbar-color: #2c3a5c var(--bg); }
+  body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.55;
+    font: 16px/1.55 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(ellipse 90% 55% at 50% -12%, #24345e 0%, transparent 70%); }
+  a { color: var(--cyan); }
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: 16px; }
+  section { padding-block: 32px; }
+  h2 { font: italic 900 clamp(1.5rem, 3.6vw, 2.2rem)/1.1 'Exo 2', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .02em; text-align: center; margin: 0 0 8px; }
+  .lead { color: var(--muted); text-align: center; max-width: 620px; margin: 0 auto 26px; }
+
+  .hero { text-align: center; padding-block: 56px 20px; }
+  .hero img.icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  h1 { font: italic 900 clamp(2.6rem, 9vw, 5rem)/.95 'Exo 2', system-ui, sans-serif; text-transform: uppercase; margin: 22px 0 0; letter-spacing: .01em; }
+  h1 span { display: block; background: linear-gradient(90deg, var(--gold), var(--orange)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tagline { color: var(--muted); font-size: clamp(1.05rem, 2.4vw, 1.25rem); max-width: 620px; margin: 20px auto 28px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .cta { display: inline-flex; align-items: center; gap: 12px; min-width: 200px; padding: 12px 22px; border-radius: 14px; text-decoration: none; text-align: left;
+    background: var(--surface); color: var(--text); font-weight: 800; box-shadow: 0 0 0 1px var(--line), 0 4px 0 rgba(0,0,0,.35); }
+  .cta.main { background: linear-gradient(90deg, var(--red), var(--orange)); box-shadow: 0 4px 0 #8a1f12, 0 10px 30px rgba(255,90,40,.25); }
+  .cta small { display: block; font-weight: 600; color: var(--muted); font-size: .78rem; }
+  .cta.main small { color: rgba(255,255,255,.85); }
+  .cta .ico { font-size: 1.35rem; line-height: 1; }
+  .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin: 26px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .95rem; }
+  .facts li::before { content: '✓ '; color: var(--cyan); font-weight: 800; }
+
+  .gallery { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .gallery li:first-child { grid-column: 1 / -1; }
+  .gallery img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px; box-shadow: 0 14px 40px rgba(0,0,0,.5), 0 0 0 1px var(--line); }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { background: var(--surface); border-radius: 16px; padding: 20px; box-shadow: 0 0 0 1px var(--line); }
+  .card h3 { font: italic 900 1.15rem/1.2 'Exo 2', system-ui, sans-serif; text-transform: uppercase; margin: 0 0 6px; color: var(--gold); }
+  .card p { margin: 0; color: var(--muted); }
+
+  .platforms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .platforms div { background: var(--surface); border-radius: 14px; padding: 16px; text-align: center; box-shadow: 0 0 0 1px var(--line); }
+  .platforms b { display: block; }
+  .platforms small { color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); margin-top: 32px; padding-block: 24px 40px; color: var(--muted); font-size: .92rem; text-align: center; }
+  footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-bottom: 10px; }
+
+  @media (max-width: 760px) {
+    .cards { grid-template-columns: 1fr; }
+    .platforms { grid-template-columns: repeat(2, 1fr); }
+    .gallery { grid-template-columns: 1fr; gap: 12px; }
+    .cta { width: 100%; max-width: 340px; }
+  }
+</style>
+</head>
+<body>
+<header class="hero wrap">
+  <img class="icon" src="icons/icon-192.png" alt="" width="96" height="96">
+  <h1>Andromeda <span>Car Racing</span></h1>
+  <p class="tagline">A 3D racing game for your phone, tablet and computer. Race on highways and circuits against computer drivers, through traffic, day and night, rain or shine. It works fully offline.</p>
+  <div class="ctas">
+    <a class="cta main" aria-disabled="true"><span class="ico">▶</span><span>Google Play<small>Coming soon</small></span></a>
+    <a class="cta" aria-disabled="true"><span class="ico"></span><span>App Store<small>Coming soon</small></span></a>
+  </div>
+  <ul class="facts">
+    <li>Works offline</li><li>No account</li><li>No ads</li><li>Free</li>
+  </ul>
+</header>
+
+<main>
+<section class="wrap" aria-labelledby="shots">
+  <h2 id="shots">On the road</h2>
+  <p class="lead">Highway races, circuits, nitro and a garage full of cars, bikes and trucks.</p>
+  <ul class="gallery">
+    <li><img src="screenshots/02-highway-race.webp" alt="A highway race through traffic, seen from behind the car" width="1280" height="720"></li>
+    <li><img src="screenshots/03-nitro.webp" alt="Nitro boost on the highway" width="1280" height="720" loading="lazy"></li>
+    <li><img src="screenshots/04-circuit.webp" alt="A race on a circuit against computer drivers" width="1280" height="720" loading="lazy"></li>
+    <li><img src="screenshots/01-menu.webp" alt="The game's main menu" width="1280" height="720" loading="lazy"></li>
+    <li><img src="screenshots/05-garage.webp" alt="The garage with upgrades and paint" width="1280" height="720" loading="lazy"></li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="what">
+  <h2 id="what">What's in it</h2>
+  <p class="lead">Four ways to race, and every vehicle drives by its own figures.</p>
+  <div class="cards">
+    <div class="card"><h3>Four modes</h3><p>Endless for a high score, Free Ride as long as you like, a 6 km Highway Race against five rivals, and Circuit racing over laps against seven.</p></div>
+    <div class="card"><h3>100 circuits</h3><p>Parkland, desert, city streets, snow, coast and jungle tracks. The first five are open; the rest open as your Racer Rating climbs.</p></div>
+    <div class="card"><h3>30 vehicles</h3><p>Cars, motorcycles, trucks and off-road vehicles from six made-up makers, each with engine, handling and nitro upgrades and paint.</p></div>
+    <div class="card"><h3>Real traffic</h3><p>Traffic signals before changing lane, follows the car ahead and moves over when you sound the horn.</p></div>
+    <div class="card"><h3>Your controls</h3><p>Tilt, buttons, a steering wheel or the sides of the screen, with steering and brake help, left-handed layouts and a cockpit view.</p></div>
+    <div class="card"><h3>Daily goals</h3><p>Three goals a day, the same for everyone, plus a bonus. Level up, earn coins and climb from Rookie to Legend.</p></div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="where">
+  <h2 id="where">Play anywhere</h2>
+  <p class="lead">One game for phones, tablets and computers. Your progress stays on your device, and you can keep a backup file of it.</p>
+  <div class="platforms">
+    <div><b>Android</b><small>phones and tablets · coming soon</small></div>
+    <div><b>iPhone and iPad</b><small>coming soon</small></div>
+    <div><b>Windows</b><small>desktop app · coming soon</small></div>
+    <div><b>Browser</b><small>installable · coming soon</small></div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <nav><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="mailto:toniomathio@gmail.com">Contact</a></nav>
+  <div>Version 1.20.0 · © 2026 JerlinPhoenix</div>
+</footer>
+</body>
+</html>
